@@ -22,10 +22,10 @@ public abstract class AbstractDAO<T> {
 
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE ")
-                .append(table)
+                .append(table)  // "flats"
                 .append("(");
 
-        sql.append(id.getName())
+        sql.append(id.getName()) // "id"
                 .append(" ")
                 .append(" INT AUTO_INCREMENT PRIMARY KEY,");
 
@@ -37,6 +37,8 @@ public abstract class AbstractDAO<T> {
 
                 if (f.getType() == int.class) {
                     sql.append("INT,");
+                }else if (f.getType() == double.class) {
+                    sql.append("DOUBLE,");
                 } else if (f.getType() == String.class) {
                     sql.append("VARCHAR(100),");
                 } else
